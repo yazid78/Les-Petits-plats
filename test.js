@@ -1,22 +1,31 @@
-for (let i = 0; i < recipes.length; i++) {
-   // console.log(recipes[i].name);
-    for (let j =0; j<recipes[i].ingredients.length;j++){
-       // console.log("Quantity:", recipes[i].ingredients[j].quantity);
+function ingredient() {
+  let ingredient = [];
+  for (let i = 0; i < recipes.length; i++) {
+    for (let j = 0; j < recipes[i].ingredients.length; j++) {
+      // console.log("Ingredients:", recipes[i].ingredients[j].ingredient);
+      ingredient.push(recipes[i].ingredients[j].ingredient);
     }
+  }
+  return ingredient;
 }
 
+console.log(ingredient(), "test");
+
+const ingredientArray = ingredient();
+console.log(ingredientArray);
 
 
-const fruits = ["pomme", "banane", "raisin", "mangue"];
+const searchInput = document.querySelector("input");
 
-const filtreTexte = (arr, requete) => {
-  return arr.filter(
-    (el) => el.toLowerCase().indexOf(requete.toLowerCase()) !== -1,
-  );
-};
-
-console.log(filtreTexte(fruits, "ne")); // ['banane', 'mangue'];
-console.log(filtreTexte(fruits, "m")); // ['pomme', 'mangue'];
+searchInput.addEventListener("input", filter )
 
 
 
+
+
+function filter(e) {
+  recipesContainer.innerHTML="" 
+  const resultSearch = e.target.value.trim().toLowerCase();
+  const TabFilter = recipes.filter(el => el.name.trim().toLowerCase().includes(resultSearch));
+  cards(TabFilter)
+}
