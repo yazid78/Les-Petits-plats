@@ -22,10 +22,19 @@ searchInput.addEventListener("input", filter )
 
 
 
-
 function filter(e) {
-  recipesContainer.innerHTML="" 
+  recipesContainer.innerHTML = "";
+
   const resultSearch = e.target.value.trim().toLowerCase();
-  const TabFilter = recipes.filter(el => el.name.trim().toLowerCase().includes(resultSearch));
-  cards(TabFilter)
+  
+  const TabFilter = recipes.filter(el => 
+    el.name.trim().toLowerCase().includes(resultSearch) ||
+    el.description.trim().toLowerCase().includes(resultSearch)
+  );
+
+  const filteredIngredients = ingredientArray.filter(ingredient => 
+    ingredient.trim().toLowerCase().includes(resultSearch)
+  );
+
+  cards(TabFilter, filteredIngredients);
 }

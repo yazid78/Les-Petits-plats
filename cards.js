@@ -1,5 +1,5 @@
 const recipesContainer = document.querySelector(".ContainerCards");
-function cards(tab) {
+function cards(tab ,tab2) {
 
   tab.forEach((element) => {
     //Déclaration variables
