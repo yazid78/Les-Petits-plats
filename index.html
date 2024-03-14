@@ -63,26 +63,26 @@
     <main>
         <section class="container-fluid mt-4 filtre">
             <div class="row">
-                <div class="col-2 custom-bg-container ml-5">
+                <div class="col-3 custom-bg-container ml-5 d-flex">
                     <label for="selectIngredients" class="form-label">Ingredients</label>
                     <select id="selectIngredients" class="form-select">
                         <!-- Créez les options à partir du DOM -->
                     </select>
                 </div>
-                <div class="col-2 custom-bg-container ml-5">
+                <div class="col-3 custom-bg-container ml-5 d-flex">
                     <label for="selectAppareils" class="form-label">Appareils</label>
                     <select id="selectAppareils" class="form-select">
                         <!-- Créez les options à partir du DOM -->
                     </select>
                 </div>
-                <div class="col-2 custom-bg-container ml-5">
+                <div class="col-3 custom-bg-container ml-5 d-flex">
                     <label for="selectUstensiles" class="form-label">Ustensiles</label>
                     <select id="selectUstensiles" class="form-select">
                         <!-- Créez les options à partir du DOM -->
                     </select>
                 </div>
             </div>
-            <span id="logo_2">1500 recettes</span>
+            <span id="logo_2">50 recettes</span>
         </section>
         
         <!-- Cards-->
@@ -93,7 +93,9 @@
         </section>
     </main>
     <script src="/data/recipes.js"></script>
-    <script src="/test.js"></script>
-    <script src="/cards.js"></script>
+    <script src="dist/searchservice.js"></script>
+    <script src="dist/cardsfactory.js"></script>
+    <script src="dist/searchcontroller.js"></script>
+    <script src="dist/filtrefactory.js"></script>
   </body>
 </html>

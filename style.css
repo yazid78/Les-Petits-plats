@@ -1,83 +1,82 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 main {
-    flex-grow: 1;
-    background-color:#F4F4F4;
+  flex-grow: 1;
+  background-color: #f4f4f4;
 }
 /*logo*/
-#logo{
-    position: absolute;
-   top: 10px;
-   left: 10px;
+#logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
-#logo_2{
-    font-family: 'Anton', sans-serif;
-    font-size: 18px;
+#logo_2 {
+  font-family: "Anton", sans-serif;
+  font-size: 18px;
 }
 
-.container-fluid{
-    display: flex;
-    justify-content: space-between;
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
 }
 /*logo*/
 /* image de fond dans la nav*/
-.img-fluid{
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover;
+.img-fluid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 /* image de fond dans la nav*/
 
 /*filtres*/
 .custom-bg-container {
-    background-color: #FFFFFF;
-    padding: 10px; 
-    border-radius: 10px; 
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
 }
-select{
-    margin-left: 40px;
+select {
+  margin-left: 40px;
 }
 
 /*filtres*/
-.card{
-    width: 60%;
+.card {
+  width: 60%;
 }
 
 /* Barre de recherche*/
-.btn.btn-success{
-    color: black;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    background-color: #303030;
-    border-color: #303030;
-  
+.btn.btn-success {
+  color: black;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: #303030;
+  border-color: #303030;
 }
-.input{
-    z-index: 2;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
-    margin-left: -55px;
+.input {
+  z-index: 2;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  margin-left: -55px;
 }
 /* Barre de recherche*/
 
 /* Cards*/
-.card-body ,p , li{
-    font-size: 14px;
-    list-style: none;
-
+.card-body,
+p,
+li {
+  font-size: 14px;
+  list-style: none;
 }
-.card{
-
+.card {
 }
-.card-text{
-  
+.card-text {
 }

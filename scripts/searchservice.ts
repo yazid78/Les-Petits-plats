@@ -1,27 +1,4 @@
-interface IFiltre {
-  appliance: string[];
-  ingredient: string[];
-  ustensils: string[];
-}
-
-interface IIngredient {
-  ingredient: string;
-  quantity?: number;
-  unit?: string;
-}
-
-interface IResultatRecherche {
-  recettes: any[];
-  filtres: {
-    ustensils: string[];
-    ingredient: IIngredient[];
-    appliance: string[];
-  };
-}
-
 class SearchService {
-
-
   search(
     motRecherche: string,
     filtresSelectionnes: IFiltre
