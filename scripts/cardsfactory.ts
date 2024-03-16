@@ -2,7 +2,7 @@ const recipesContainer = document.querySelector(".ContainerCards");
 class CardFactory {
 
   generate(recipes: any[]) {
-
+    recipesContainer.innerHTML = "";
     recipes.forEach((element) => {
       //Déclaration variables
       const divCardCol = document.createElement("article");

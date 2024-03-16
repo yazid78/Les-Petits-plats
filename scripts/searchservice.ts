@@ -1,8 +1,6 @@
 class SearchService {
-  search(
-    motRecherche: string,
-    filtresSelectionnes: IFiltre
-  ): IResultatRecherche {
+
+  search(motRecherche: string, filtresSelectionnes: IFiltre): IResultatRecherche {
 
     let resultat = [
       {
@@ -80,6 +78,11 @@ class SearchService {
         ustensils: ["presse citron"],
       },
     ];
+//algo de recherche
+    motRecherche = motRecherche.trim().toLowerCase();
+    resultat = resultat.filter((recette) => recette.name.trim().toLowerCase().includes(motRecherche) || recette.description.trim().toLowerCase().includes(motRecherche));
+    console.log("retour:", resultat);
+
 
     return {
       recettes: resultat,
@@ -140,3 +143,4 @@ class SearchService {
     };
   }
 }
+

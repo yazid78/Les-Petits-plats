@@ -1,20 +1,19 @@
-var recipesContainer = document.querySelector(".ContainerCards");
-var CardFactory = /** @class */ (function () {
-    function CardFactory() {
-    }
-    CardFactory.prototype.generate = function (recipes) {
-        recipes.forEach(function (element) {
+const recipesContainer = document.querySelector(".ContainerCards");
+class CardFactory {
+    generate(recipes) {
+        recipesContainer.innerHTML = "";
+        recipes.forEach((element) => {
             //Déclaration variables
-            var divCardCol = document.createElement("article");
-            var divCard = document.createElement("div");
-            var picture = "Photos P7 JS Les petits plats" + "/" + element.image;
-            var img = document.createElement("img");
-            var cardBody = document.createElement("div");
-            var h5_title = document.createElement("h5");
-            var h6_recipes = document.createElement("h6");
-            var p_recipes = document.createElement("p");
-            var h6_ingredients = document.createElement("h6");
-            var ul_ingredients = document.createElement("ul");
+            const divCardCol = document.createElement("article");
+            const divCard = document.createElement("div");
+            const picture = "Photos P7 JS Les petits plats" + "/" + element.image;
+            const img = document.createElement("img");
+            const cardBody = document.createElement("div");
+            const h5_title = document.createElement("h5");
+            const h6_recipes = document.createElement("h6");
+            const p_recipes = document.createElement("p");
+            const h6_ingredients = document.createElement("h6");
+            const ul_ingredients = document.createElement("ul");
             // Attribution variables
             img.src = picture;
             img.alt = element.name;
@@ -22,9 +21,9 @@ var CardFactory = /** @class */ (function () {
             h6_recipes.textContent = "Recette";
             p_recipes.textContent = element.description;
             h6_ingredients.textContent = "Ingrédients";
-            element.ingredients.forEach(function (ingredient) {
-                var li_ingredients = document.createElement("li");
-                li_ingredients.textContent = "".concat(ingredient.quantity || "", " ").concat(ingredient.unit || "", " ").concat(ingredient.ingredient);
+            element.ingredients.forEach((ingredient) => {
+                const li_ingredients = document.createElement("li");
+                li_ingredients.textContent = `${ingredient.quantity || ""} ${ingredient.unit || ""} ${ingredient.ingredient}`;
                 li_ingredients.classList.add("br");
                 ul_ingredients.appendChild(li_ingredients);
             });
@@ -45,7 +44,6 @@ var CardFactory = /** @class */ (function () {
             cardBody.appendChild(h6_ingredients);
             cardBody.appendChild(ul_ingredients);
         });
-    };
-    return CardFactory;
-}());
+    }
+}
 //# sourceMappingURL=cardsfactory.js.map

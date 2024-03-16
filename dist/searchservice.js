@@ -1,8 +1,6 @@
-var SearchService = /** @class */ (function () {
-    function SearchService() {
-    }
-    SearchService.prototype.search = function (motRecherche, filtresSelectionnes) {
-        var resultat = [
+class SearchService {
+    search(motRecherche, filtresSelectionnes) {
+        let resultat = [
             {
                 id: 1,
                 image: "Recette01.jpg",
@@ -76,6 +74,10 @@ var SearchService = /** @class */ (function () {
                 ustensils: ["presse citron"],
             },
         ];
+        //algo de recherche
+        motRecherche = motRecherche.trim().toLowerCase();
+        resultat = resultat.filter((recette) => recette.name.trim().toLowerCase().includes(motRecherche) || recette.description.trim().toLowerCase().includes(motRecherche));
+        console.log("retour:", resultat);
         return {
             recettes: resultat,
             filtres: {
@@ -133,7 +135,6 @@ var SearchService = /** @class */ (function () {
                 appliance: ["Blender", "Saladier"],
             },
         };
-    };
-    return SearchService;
-}());
+    }
+}
 //# sourceMappingURL=searchservice.js.map
