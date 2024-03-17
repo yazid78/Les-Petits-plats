@@ -46,12 +46,11 @@ main {
 }
 select {
   margin-left: 40px;
+  width: 25px;
 }
 
 /*filtres*/
-.card {
-  width: 60%;
-}
+
 
 /* Barre de recherche*/
 .btn.btn-success {
@@ -71,12 +70,12 @@ select {
 
 /* Cards*/
 .card-body,
-p,
-li {
+p,li {
   font-size: 14px;
   list-style: none;
 }
 .card {
+  width: 60%;
 }
 .card-text {
 }

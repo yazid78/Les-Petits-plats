@@ -4,6 +4,9 @@ class FiltreFactory {
         const selectIngredients = document.getElementById("selectIngredients");
         const selectAppareils = document.getElementById("selectAppareils");
         const selectUstensiles = document.getElementById("selectUstensiles");
+        selectIngredients.innerHTML = '';
+        selectAppareils.innerHTML = '';
+        selectUstensiles.innerHTML = '';
         // Génération des options pour les ingrédients
         ingredients.forEach(ingredient => {
             const option = document.createElement("option");
@@ -32,7 +35,4 @@ class FiltreFactory {
         };
     }
 }
-// Utilisation de FiltreFactory pour générer les options
-const filtreFactory = new FiltreFactory();
-const filtres = filtreFactory.generateOption(["Lait de coco", "Jus de citron", "Crème de coco"], ["Blender", "Saladier"], ["cuillère à Soupe", "verres", "presse citron"]);
 //# sourceMappingURL=filtrefactory.js.map

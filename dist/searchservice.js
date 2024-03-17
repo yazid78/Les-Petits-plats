@@ -76,8 +76,12 @@ class SearchService {
         ];
         //algo de recherche
         motRecherche = motRecherche.trim().toLowerCase();
-        resultat = resultat.filter((recette) => recette.name.trim().toLowerCase().includes(motRecherche) || recette.description.trim().toLowerCase().includes(motRecherche));
-        console.log("retour:", resultat);
+        if (motRecherche.length >= 3) {
+            resultat = resultat.filter((recette) => recette.name.trim().toLowerCase().includes(motRecherche)
+                || recette.ingredients.some(ingredient => ingredient.ingredient.trim().toLowerCase().includes(motRecherche))
+                || recette.description.trim().toLowerCase().includes(motRecherche));
+            console.log("retour:", resultat);
+        }
         return {
             recettes: resultat,
             filtres: {
