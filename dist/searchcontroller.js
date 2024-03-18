@@ -1,4 +1,3 @@
-import { SearchService } from "./searchservice";
 // Création des instances de SearchService et CardFactory
 const searchService = new SearchService();
 const cardFactory = new CardFactory();

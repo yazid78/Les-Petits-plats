@@ -1768,5 +1768,4 @@ let recipes = [
         "ustensils": ["rouleau à patisserie", "fouet"]
     }
 ];
-export default { recipes };
 //# sourceMappingURL=recipes.js.map
