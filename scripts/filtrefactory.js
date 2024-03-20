@@ -1,5 +1,5 @@
 class FiltreFactory {
-    generateOption(ingredients: string[], appliances: string[], ustensils: string[]): IFiltre {
+    generateOption(ingredients, appliances, ustensils){
         // Sélection des éléments select dans le DOM
         const selectIngredients = document.getElementById("selectIngredients");
         const selectAppareils = document.getElementById("selectAppareils");

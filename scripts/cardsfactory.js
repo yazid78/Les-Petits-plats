@@ -1,7 +1,7 @@
 const recipesContainer = document.querySelector(".ContainerCards");
 class CardFactory {
 
-  generate(recipes: any[]) {
+  generate(recipes) {
     recipesContainer.innerHTML = "";
     recipes.forEach((element) => {
       //Déclaration variables
