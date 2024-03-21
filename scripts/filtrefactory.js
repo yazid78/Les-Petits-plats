@@ -3,7 +3,6 @@ class FiltreFactory {
     this.selectIngredients = document.getElementById("selectIngredients");
     this.selectAppareils = document.getElementById("selectAppareils");
     this.selectUstensiles = document.getElementById("selectUstensiles");
-    console.log(this.selectIngredients);
   }
 
   generateOption(ingredients, appliances, ustensils) {

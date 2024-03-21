@@ -4,24 +4,33 @@ class SearchService {
   }
 
   search(motRecherche, filtresSelectionnes) {
-
+//Algo SearchBar
     motRecherche = motRecherche.trim().toLowerCase();
     this.resultat = recipes.filter((recette) => 
-          recette.name.trim().toLowerCase().includes(motRecherche) ||
-          recette.ingredients.some(ingredient => ingredient.ingredient.trim().toLowerCase().includes(motRecherche)) ||
-          recette.description.trim().toLowerCase().includes(motRecherche)
+        recette.name.trim().toLowerCase().includes(motRecherche) ||
+        recette.ingredients.some(ingredient => ingredient.ingredient.trim().toLowerCase().includes(motRecherche)) ||
+        recette.description.trim().toLowerCase().includes(motRecherche)
     );
+//Algo Filtre select
 
-    if (filtresSelectionnes.appliance.length > 0) {
-      this.resultat = this.resultat.filter(recette => recette.appliance.includes(filtresSelectionnes.appliance));
-    }
-    //inverser
-    if (filtresSelectionnes.ingredient.length > 0) {
-      this.resultat = this.resultat.filter(recette => recette.ingredients.some(ingredient => filtresSelectionnes.ingredient.includes(ingredient.ingredient)));
-    }
-    if (filtresSelectionnes.ustensils.length > 0) {
-      this.resultat = this.resultat.filter(recette => recette.ustensils.some(ustensil => filtresSelectionnes.ustensils.includes(ustensil)));
-    }
+if (filtresSelectionnes.ingredient.length > 0) {
+  this.resultat = this.resultat.filter(recette => 
+    recette.ingredients.some(ingredient => filtresSelectionnes.ingredient.includes(ingredient.ingredient))
+  );
+}
+if (filtresSelectionnes.appliance.length > 0) {
+  this.resultat = this.resultat.filter(recette => recette.appliance.includes(filtresSelectionnes.appliance));
+}
+if(filtresSelectionnes.ustensils.length> 0){
+  this.resultat = this.resultat.filter(recette => {
+    const ustensilsString = recette.ustensils.toString().toLowerCase(); 
+    return filtresSelectionnes.ustensils.filter(ustensil => ustensilsString.includes(ustensil.toLowerCase())).length > 0;
+  });
+  
+  
+}
+
+
 console.log(this.resultat.length);
     return this.resultat;
   }

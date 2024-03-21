@@ -17,35 +17,41 @@ function genererEtAfficherRecettes() {
   const motRecherche = inputElement.value.trim().toLowerCase();
 
   let resultat = searchService.search(motRecherche, filtresSelectionnes);
-  if (resultat.length  > 0) {
+  if (resultat.length > 0) {
     noResultsMessage.style.display = "none";
     cardFactory.generate(resultat);
   } else {
     noResultsMessage.style.display = "block";
     cardFactory.generate(resultat);
   }
-
-  const nomsIngredients = resultat.map((recette) => recette.ingredients.map((ingredient) => ingredient.ingredient));
-  const appliances = resultat.map((recette) => recette.appliance);
-  const ustensils = resultat.map((recette) => recette.ustensils);
-  filtreFactory.generateOption(nomsIngredients, appliances, ustensils);
+  const nomsIngredients = new Set(resultat.flatMap((recette) => recette.ingredients.map((ingredient) => ingredient.ingredient)));
+  const appliances = new Set(resultat.map((recette) => recette.appliance));
+  const ustensils = new Set(resultat.flatMap((recette) => recette.ustensils.flatMap((ustensil) => ustensil)));
+  
+  filtreFactory.generateOption([...nomsIngredients], [...appliances], [...ustensils]);
+  
 }
 
 inputElement.addEventListener("input", genererEtAfficherRecettes);
 genererEtAfficherRecettes();
 
-this.selectIngredients.addEventListener('change', () => {
-      filtresSelectionnes.ingredient = Array.from(this.selectIngredients.selectedOptions).map(option => option.value);
-      genererEtAfficherRecettes();
-    });
+filtreFactory.selectAppareils.addEventListener("change", () => {
+  const selectedAppliance = filtreFactory.selectAppareils.value;
+  filtresSelectionnes.appliance = [];
+  filtresSelectionnes.appliance.push(selectedAppliance);
+  genererEtAfficherRecettes();
+});
 
-    this.selectAppareils.addEventListener('change', () => {
-      filtresSelectionnes.appliance = Array.from(this.selectAppareils.selectedOptions).map(option => option.value);
-      genererEtAfficherRecettes();
-    });
+filtreFactory.selectUstensiles.addEventListener("change", () => {
+  const selectedUstensils = filtreFactory.selectUstensiles.value;
+  filtresSelectionnes.ustensils = [];
+  filtresSelectionnes.ustensils.push(selectedUstensils);
+  genererEtAfficherRecettes();
+});
 
-    this.selectUstensiles.addEventListener('change', () => {
-      filtresSelectionnes.ustensils = Array.from(this.selectUstensiles.selectedOptions).map(option => option.value);
-      genererEtAfficherRecettes();
-    });
-  
+filtreFactory.selectIngredients.addEventListener("change", () => {
+  const selectIngredients = filtreFactory.selectIngredients.value;
+  filtresSelectionnes.ingredient = [];
+  filtresSelectionnes.ingredient.push(selectIngredients);
+  genererEtAfficherRecettes();
+})
