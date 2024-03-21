@@ -1,42 +1,37 @@
 class FiltreFactory {
-    generateOption(ingredients, appliances, ustensils){
-        // Sélection des éléments select dans le DOM
-        const selectIngredients = document.getElementById("selectIngredients");
-        const selectAppareils = document.getElementById("selectAppareils");
-        const selectUstensiles = document.getElementById("selectUstensiles");
+  constructor() {
+    this.selectIngredients = document.getElementById("selectIngredients");
+    this.selectAppareils = document.getElementById("selectAppareils");
+    this.selectUstensiles = document.getElementById("selectUstensiles");
+    console.log(this.selectIngredients);
+  }
 
-        selectIngredients.innerHTML = '';
-        selectAppareils.innerHTML = '';
-        selectUstensiles.innerHTML = '';
-        
-        // Génération des options pour les ingrédients
-        ingredients.forEach(ingredient => {
-            const option = document.createElement("option");
-            option.value = ingredient;
-            option.textContent = ingredient;
-            selectIngredients.appendChild(option);
-        });
+  generateOption(ingredients, appliances, ustensils) {
+    this._clearSelectOptions();
 
-        // Génération des options pour les appareils
-        appliances.forEach(appliance => {
-            const option = document.createElement("option");
-            option.value = appliance;
-            option.textContent = appliance;
-            selectAppareils.appendChild(option);
-        });
+    this._generateSelectOptions(this.selectIngredients, ingredients);
+    this._generateSelectOptions(this.selectAppareils, appliances);
+    this._generateSelectOptions(this.selectUstensiles, ustensils);
 
-        // Génération des options pour les ustensiles
-        ustensils.forEach(ustensil => {
-            const option = document.createElement("option");
-            option.value = ustensil;
-            option.textContent = ustensil;
-            selectUstensiles.appendChild(option);
-        });
+    return {
+      appliance: appliances,
+      ingredient: ingredients,
+      ustensils: ustensils,
+    };
+  }
 
-        return {
-            appliance: appliances,
-            ingredient: ingredients,
-            ustensils: ustensils
-        };
-    }
+  _clearSelectOptions() {
+    this.selectIngredients.innerHTML = "";
+    this.selectAppareils.innerHTML = "";
+    this.selectUstensiles.innerHTML = "";
+  }
+
+  _generateSelectOptions(selectElement, options) {
+    options.forEach((optionValue) => {
+      const option = document.createElement("option");
+      option.value = optionValue;
+      option.textContent = optionValue;
+      selectElement.appendChild(option);
+    });
+  }
 }
