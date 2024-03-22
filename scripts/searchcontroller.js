@@ -24,12 +24,10 @@ function genererEtAfficherRecettes() {
     noResultsMessage.style.display = "block";
     cardFactory.generate(resultat);
   }
-  const nomsIngredients = new Set(resultat.flatMap((recette) => recette.ingredients.map((ingredient) => ingredient.ingredient)));
-  const appliances = new Set(resultat.map((recette) => recette.appliance));
-  const ustensils = new Set(resultat.flatMap((recette) => recette.ustensils.flatMap((ustensil) => ustensil)));
-  
-  filtreFactory.generateOption([...nomsIngredients], [...appliances], [...ustensils]);
-  
+  const nomsIngredients = new Set (resultat.flatMap((recette) =>recette.ingredients.map((ingredient) => ingredient.ingredient)));
+  const appliances = new Set (resultat.flatMap((recette) => recette.appliance));
+  const ustensils = new Set (resultat.flatMap((recette) => recette.ustensils));
+  filtreFactory.generateOption(nomsIngredients, appliances, ustensils);
 }
 
 inputElement.addEventListener("input", genererEtAfficherRecettes);
@@ -42,16 +40,30 @@ filtreFactory.selectAppareils.addEventListener("change", () => {
   genererEtAfficherRecettes();
 });
 
-filtreFactory.selectUstensiles.addEventListener("change", () => {
-  const selectedUstensils = filtreFactory.selectUstensiles.value;
-  filtresSelectionnes.ustensils = [];
-  filtresSelectionnes.ustensils.push(selectedUstensils);
-  genererEtAfficherRecettes();
-});
-
 filtreFactory.selectIngredients.addEventListener("change", () => {
   const selectIngredients = filtreFactory.selectIngredients.value;
   filtresSelectionnes.ingredient = [];
   filtresSelectionnes.ingredient.push(selectIngredients);
   genererEtAfficherRecettes();
 })
+
+  const select = document.querySelector(".select");  
+  const text = document.createElement("div");
+filtreFactory.selectUstensiles.addEventListener("change", () => {
+  const selectedUstensils = filtreFactory.selectUstensiles.value;
+  filtresSelectionnes.ustensils = [];
+  filtresSelectionnes.ustensils.push(selectedUstensils);
+  text.textContent = selectedUstensils
+  select.appendChild(text);
+  genererEtAfficherRecettes();
+});
+
+text.addEventListener("click", () => {
+  filtresSelectionnes = {
+    appliance: [],
+    ingredient: [],
+    ustensils: [],
+  };
+  text.textContent = '';
+  genererEtAfficherRecettes(); 
+});

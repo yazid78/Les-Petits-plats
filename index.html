@@ -47,13 +47,14 @@
           <div class="col-12 text-center d-flex justify-content-center">
               <form class="form-inline input-group w-100">
                   <input class="form-control mr-sm-2" type="search" placeholder="Rechercher une recette, un ingrédient, ..." aria-label="Search">
-                  <div class="input">
-                      <button class="btn btn-success" type="submit">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                          </svg>
+                
+                      <button class="input" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                            <circle cx="10" cy="10" r="9.5" stroke="white"/>
+                            <line x1="18.3536" y1="18.6464" x2="27.3536" y2="27.6464" stroke="white"/>
+                            </svg>
                        </button>
-                  </div>
+                
               </form>
           </div>
       </div>
@@ -62,7 +63,7 @@
     </header>
     <main>
         <section class="container-fluid mt-4 filtre">
-            <div class="row">
+            <div class="row select">
                 <div class="col-3 custom-bg-container ml-5 d-flex">
                     <label for="selectIngredients" class="form-label">Ingredients</label>
                     <select id="selectIngredients" class="form-select">
