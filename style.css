@@ -57,14 +57,24 @@ select {
   width: 25px;
   height: 20px;
 }
-
-
+.form-inline.input-group.w-100{
+  position: absolute;
+}
 .input {
+  position: relative;
+  left: 3px;
+  top: 2px;
+  height: 35px;
   background-color:#1B1B1B ;
-  z-index: 2;
+  z-index: 10;
   border-radius: 10px;
+  border-color: #1B1B1B;
   margin-left: -55px;
   font-size: 5px;
+}
+.input:hover{
+  background-color: #FFD15B;
+  border-color: #FFD15B;
 }
 /* Barre de recherche*/
 
@@ -75,7 +85,24 @@ p,li {
   list-style: none;
 }
 .card {
-  width: 60%;
+  width:100%;
+  max-width: 380px;
+}
+@media only screen and (max-width: 1350px) {
+  .card {
+    width:80%;
+    max-width: 380px;
+  }
+}
+article{
+  margin-bottom: 50px;
+}
+@media only screen and (max-width: 1350px) {
+  article {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
 }
 .card-text {
 }

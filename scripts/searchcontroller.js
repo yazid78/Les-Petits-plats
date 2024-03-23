@@ -59,11 +59,7 @@ filtreFactory.selectUstensiles.addEventListener("change", () => {
 });
 
 text.addEventListener("click", () => {
-  filtresSelectionnes = {
-    appliance: [],
-    ingredient: [],
-    ustensils: [],
-  };
+  filtresSelectionnes.ustensils.pop()
   text.textContent = '';
   genererEtAfficherRecettes(); 
 });
