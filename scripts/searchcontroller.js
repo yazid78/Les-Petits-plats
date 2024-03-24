@@ -24,9 +24,13 @@ function genererEtAfficherRecettes() {
     noResultsMessage.style.display = "block";
     cardFactory.generate(resultat);
   }
-  const nomsIngredients = new Set (resultat.flatMap((recette) =>recette.ingredients.map((ingredient) => ingredient.ingredient)));
-  const appliances = new Set (resultat.flatMap((recette) => recette.appliance));
-  const ustensils = new Set (resultat.flatMap((recette) => recette.ustensils));
+  const nomsIngredients = new Set(
+    resultat.flatMap((recette) =>
+      recette.ingredients.map((ingredient) => ingredient.ingredient)
+    )
+  );
+  const appliances = new Set(resultat.flatMap((recette) => recette.appliance));
+  const ustensils = new Set(resultat.flatMap((recette) => recette.ustensils));
   filtreFactory.generateOption(nomsIngredients, appliances, ustensils);
 }
 
@@ -45,21 +49,28 @@ filtreFactory.selectIngredients.addEventListener("change", () => {
   filtresSelectionnes.ingredient = [];
   filtresSelectionnes.ingredient.push(selectIngredients);
   genererEtAfficherRecettes();
-})
+});
 
-  const select = document.querySelector(".select");  
-  const text = document.createElement("div");
+const select = document.querySelector(".select");
+const text = document.createElement("div");
+
 filtreFactory.selectUstensiles.addEventListener("change", () => {
   const selectedUstensils = filtreFactory.selectUstensiles.value;
   filtresSelectionnes.ustensils = [];
   filtresSelectionnes.ustensils.push(selectedUstensils);
-  text.textContent = selectedUstensils
+  afficherOptions()
+});
+
+function afficherOptions(){
+filtresSelectionnes.ustensils.forEach(element => {
+  text.textContent = element;
   select.appendChild(text);
   genererEtAfficherRecettes();
 });
 
+}
 text.addEventListener("click", () => {
-  filtresSelectionnes.ustensils.pop()
-  text.textContent = '';
-  genererEtAfficherRecettes(); 
+  filtresSelectionnes.ustensils.pop();
+  text.textContent = "";
+  genererEtAfficherRecettes();
 });

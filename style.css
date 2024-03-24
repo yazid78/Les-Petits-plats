@@ -58,9 +58,9 @@ select {
   height: 20px;
 }
 .form-inline.input-group.w-100{
-  position: absolute;
+  /*class de l'input*/
 }
-.input {
+.Loupeinput {
   position: relative;
   left: 3px;
   top: 2px;
@@ -71,11 +71,23 @@ select {
   border-color: #1B1B1B;
   margin-left: -55px;
   font-size: 5px;
+  
 }
-.input:hover{
+.Loupeinput:hover{
   background-color: #FFD15B;
   border-color: #FFD15B;
 }
+.svgCroix {
+  position: absolute;
+  right: 50px; 
+  top: 50%; 
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+  width: 13px;
+  height: 13px;
+}
+
 /* Barre de recherche*/
 
 /* Cards*/
@@ -87,6 +99,10 @@ p,li {
 .card {
   width:100%;
   max-width: 380px;
+  height: 731px;
+}.card img {
+ height:253px;
+ object-fit: cover;
 }
 @media only screen and (max-width: 1350px) {
   .card {
@@ -105,4 +121,6 @@ article{
   }
 }
 .card-text {
+  overflow: hidden;         /* Cache le texte qui dépasse */
+  text-overflow: ellipsis;
 }
