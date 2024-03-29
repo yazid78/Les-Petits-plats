@@ -48,7 +48,6 @@ const text = document.createElement("div");
 filtreFactory.selectUstensiles.addEventListener("change", () => {
   const selectedUstensils = filtreFactory.selectUstensiles.value;
   filtresSelectionnes.ustensils.push(selectedUstensils);
-  console.log(filtresSelectionnes, 'ici');
   afficherOptions()
 });
 

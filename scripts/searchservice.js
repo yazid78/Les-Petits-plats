@@ -15,31 +15,33 @@ class SearchService {
         ) ||
         recette.description.trim().toLowerCase().includes(motRecherche)
     );
+
     // parcourir toutes les recettes et retirer ceux dont aucun filtres selectionner est present
     //Algo Filtre select
     if (filtresSelectionnes.ingredient.length > 0) {
       this.recettes = this.recettes.filter((recette) =>
-        recette.ingredients.some((ingredient) =>
-          filtresSelectionnes.ingredient.includes(ingredient.ingredient)
+        filtresSelectionnes.ingredient.every((ingredientSeleccionne) =>
+          recette.ingredients.some((ingredient) =>
+            ingredient.ingredient === ingredientSeleccionne
+          )
         )
       );
     }
-    if (filtresSelectionnes.appliance.length > 0) {
+
+if (filtresSelectionnes.appliance.length > 0) {
       this.recettes = this.recettes.filter((recette) =>
-        recette.appliance.includes(filtresSelectionnes.appliance)
+        filtresSelectionnes.appliance.includes(recette.appliance)
       );
     }
+
     if (filtresSelectionnes.ustensils.length > 0) {
-      this.recettes = this.recettes.filter((recette) => {
-        const ustensilsString = recette.ustensils.toString().toLowerCase();
-        console.log(ustensilsString)
-        return (
-          filtresSelectionnes.ustensils.filter((ustensil) =>
-            ustensilsString.includes(ustensil.toLowerCase())
-          ).length > 0
-        );
-      });
+      this.recettes = this.recettes.filter((recette) =>
+        filtresSelectionnes.ustensils.every((ustensilSelecionne) =>
+          recette.ustensils.includes(ustensilSelecionne)
+        )
+      );
     }
+
     let nomsIngredients = new Set();
     let appliances = new Set();
     let ustensils = new Set();
@@ -65,8 +67,8 @@ class SearchService {
         appliance: [...appliances],
       },
     };
-
     console.log(this.recettes.length);
+
     return retour;
   }
 }

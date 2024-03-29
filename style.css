@@ -124,3 +124,9 @@ article{
   overflow: hidden;         /* Cache le texte qui dépasse */
   text-overflow: ellipsis;
 }
+.dynamic-input {
+  width: calc(100% - 2px);
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
