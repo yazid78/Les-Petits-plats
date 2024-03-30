@@ -42,25 +42,33 @@ filtreFactory.selectIngredients.addEventListener("change", () => {
   genererEtAfficherRecettes();
 });
 
+filtreFactory.selectIngredients.addEventListener("change", () => {
+  const selectIngredients = filtreFactory.selectIngredients.value;
+  filtresSelectionnes.ingredient.push(selectIngredients);
+  genererEtAfficherRecettes();
+});
+
 const select = document.querySelector(".select");
-const text = document.createElement("div");
 
 filtreFactory.selectUstensiles.addEventListener("change", () => {
   const selectedUstensils = filtreFactory.selectUstensiles.value;
   filtresSelectionnes.ustensils.push(selectedUstensils);
-  afficherOptions()
+  afficherOptions(selectedUstensils); // Passer l'ustensile sélectionné comme argument
 });
 
-function afficherOptions(){
-filtresSelectionnes.ustensils.forEach(element => {
-  text.textContent = element;
-  select.appendChild(text);
+function afficherOptions(selectedUstensil){
+  const newDiv = document.createElement("div"); // Créer une nouvelle div
+  newDiv.textContent = selectedUstensil; // Définir le texte de la nouvelle div
+  select.appendChild(newDiv); // Ajouter la nouvelle div au conteneur
+
+  newDiv.addEventListener("click", () => { // Ajouter un gestionnaire d'événement de clic à la nouvelle div
+    const index = filtresSelectionnes.ustensils.indexOf(selectedUstensil);
+    if (index !== -1) {
+      filtresSelectionnes.ustensils.splice(index, 1); // Supprimer l'ustensile du tableau des filtres sélectionnés
+      select.removeChild(newDiv); // Supprimer la div du conteneur
+      genererEtAfficherRecettes();
+    }
+  });
+
   genererEtAfficherRecettes();
-});
-
 }
-text.addEventListener("click", () => {
-  filtresSelectionnes.ustensils.pop();
-  text.textContent = "";
-  genererEtAfficherRecettes();
-});

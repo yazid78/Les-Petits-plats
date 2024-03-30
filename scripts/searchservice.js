@@ -5,40 +5,33 @@ class SearchService {
 
   search(motRecherche, filtresSelectionnes) {
     //Algo SearchBar
-    //if (motRecherche.length >=3 ){}
-    motRecherche = motRecherche.trim().toLowerCase();
-    this.recettes = recipes.filter(
-      (recette) =>
-        recette.name.trim().toLowerCase().includes(motRecherche) ||
-        recette.ingredients.some((ingredient) =>
-          ingredient.ingredient.trim().toLowerCase().includes(motRecherche)
-        ) ||
-        recette.description.trim().toLowerCase().includes(motRecherche)
-    );
-
+    if (motRecherche.length >= 3) {
+      motRecherche = motRecherche.trim().toLowerCase();
+      this.recettes = recipes.filter(
+        (recette) =>
+          recette.name.trim().toLowerCase().includes(motRecherche) ||
+          recette.ingredients.some((ingredient) => ingredient.ingredient.trim().toLowerCase().includes(motRecherche)) ||
+          recette.description.trim().toLowerCase().includes(motRecherche)
+      );
+    } else {
+      this.recettes = recipes;
+    }
     // parcourir toutes les recettes et retirer ceux dont aucun filtres selectionner est present
     //Algo Filtre select
     if (filtresSelectionnes.ingredient.length > 0) {
       this.recettes = this.recettes.filter((recette) =>
-        filtresSelectionnes.ingredient.every((ingredientSeleccionne) =>
-          recette.ingredients.some((ingredient) =>
-            ingredient.ingredient === ingredientSeleccionne
-          )
+        filtresSelectionnes.ingredient.every((ingredientSelectionne) =>
+          recette.ingredients.some((ingredient) => ingredient.ingredient.includes(ingredientSelectionne))
         )
       );
     }
-
-if (filtresSelectionnes.appliance.length > 0) {
-      this.recettes = this.recettes.filter((recette) =>
-        filtresSelectionnes.appliance.includes(recette.appliance)
-      );
+    if (filtresSelectionnes.appliance.length > 0) {
+      this.recettes = this.recettes.filter((recette) => recette.appliance.includes(filtresSelectionnes.appliance));
     }
 
     if (filtresSelectionnes.ustensils.length > 0) {
       this.recettes = this.recettes.filter((recette) =>
-        filtresSelectionnes.ustensils.every((ustensilSelecionne) =>
-          recette.ustensils.includes(ustensilSelecionne)
-        )
+        filtresSelectionnes.ustensils.every((ustensilsSelectionne) => recette.ustensils.includes(ustensilsSelectionne.toLowerCase()))
       );
     }
 
