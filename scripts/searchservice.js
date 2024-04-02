@@ -16,12 +16,11 @@ class SearchService {
     } else {
       this.recettes = recipes;
     }
-    // parcourir toutes les recettes et retirer ceux dont aucun filtres selectionner est present
     //Algo Filtre select
     if (filtresSelectionnes.ingredient.length > 0) {
       this.recettes = this.recettes.filter((recette) =>
         filtresSelectionnes.ingredient.every((ingredientSelectionne) =>
-          recette.ingredients.some((ingredient) => ingredient.ingredient.includes(ingredientSelectionne))
+          recette.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(ingredientSelectionne.toLowerCase()))
         )
       );
     }
@@ -30,9 +29,10 @@ class SearchService {
     }
 
     if (filtresSelectionnes.ustensils.length > 0) {
-      this.recettes = this.recettes.filter((recette) =>
-        filtresSelectionnes.ustensils.every((ustensilsSelectionne) => recette.ustensils.includes(ustensilsSelectionne.toLowerCase()))
-      );
+      this.recettes = this.recettes.filter((recette) => {
+        const ustensilsString = recette.ustensils.join(',').toLowerCase(); 
+        return filtresSelectionnes.ustensils.every((ustensilSelectionne) => ustensilsString.includes(ustensilSelectionne.toLowerCase()));
+      });
     }
 
     let nomsIngredients = new Set();

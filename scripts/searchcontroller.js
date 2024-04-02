@@ -24,47 +24,55 @@ function genererEtAfficherRecettes() {
     noResultsMessage.style.display = "block";
     cardFactory.generate(resultatRecherche.resultats);
   }
-  filtreFactory.generateOption(resultatRecherche.filtresDispo.ingredient, resultatRecherche.filtresDispo.appliance, resultatRecherche.filtresDispo.ustensils);
+  filtreFactory.generateOption(
+    resultatRecherche.filtresDispo.ingredient,
+    resultatRecherche.filtresDispo.appliance,
+    resultatRecherche.filtresDispo.ustensils
+  );
 }
 
 inputElement.addEventListener("input", genererEtAfficherRecettes);
 genererEtAfficherRecettes();
 
-filtreFactory.selectAppareils.addEventListener("change", () => {
-  const selectedAppliance = filtreFactory.selectAppareils.value;
-  filtresSelectionnes.appliance.push(selectedAppliance);
-  genererEtAfficherRecettes();
+filtreFactory.selectUstensiles.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.tagName === "LABEL") {
+    const selectedUstensil = target.textContent.trim();
+    filtresSelectionnes.ustensils.push(selectedUstensil);
+    afficherOptions(select, selectedUstensil, filtresSelectionnes.ustensils);
+  }
 });
 
-filtreFactory.selectIngredients.addEventListener("change", () => {
-  const selectIngredients = filtreFactory.selectIngredients.value;
-  filtresSelectionnes.ingredient.push(selectIngredients);
-  genererEtAfficherRecettes();
+filtreFactory.selectIngredients.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.tagName === "LABEL") {
+    const selectedIngredient = target.textContent.trim();
+    filtresSelectionnes.ingredient.push(selectedIngredient);
+    afficherOptions(select, selectedIngredient, filtresSelectionnes.ingredient);
+  }
 });
 
-filtreFactory.selectIngredients.addEventListener("change", () => {
-  const selectIngredients = filtreFactory.selectIngredients.value;
-  filtresSelectionnes.ingredient.push(selectIngredients);
-  genererEtAfficherRecettes();
+filtreFactory.selectAppareils.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.tagName === "LABEL") {
+    const selectedAppliance = target.textContent.trim();
+    filtresSelectionnes.appliance.push(selectedAppliance);
+    afficherOptions(select, selectedAppliance, filtresSelectionnes.appliance);
+   
+  }
 });
 
 const select = document.querySelector(".select");
 
-filtreFactory.selectUstensiles.addEventListener("change", () => {
-  const selectedUstensils = filtreFactory.selectUstensiles.value;
-  filtresSelectionnes.ustensils.push(selectedUstensils);
-  afficherOptions(selectedUstensils); // Passer l'ustensile sélectionné comme argument
-});
-
-function afficherOptions(selectedUstensil){
+function afficherOptions(a,b,c){
   const newDiv = document.createElement("div"); // Créer une nouvelle div
-  newDiv.textContent = selectedUstensil; // Définir le texte de la nouvelle div
-  select.appendChild(newDiv); // Ajouter la nouvelle div au conteneur
+  newDiv.textContent = b; // Définir le texte de la nouvelle div
+  a.appendChild(newDiv); // Ajouter la nouvelle div au conteneur
 
   newDiv.addEventListener("click", () => { // Ajouter un gestionnaire d'événement de clic à la nouvelle div
-    const index = filtresSelectionnes.ustensils.indexOf(selectedUstensil);
+    const index = c.indexOf(b);
     if (index !== -1) {
-      filtresSelectionnes.ustensils.splice(index, 1); // Supprimer l'ustensile du tableau des filtres sélectionnés
+      c.splice(index, 1); // Supprimer l'ustensile du tableau des filtres sélectionnés
       select.removeChild(newDiv); // Supprimer la div du conteneur
       genererEtAfficherRecettes();
     }

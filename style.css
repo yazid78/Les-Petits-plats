@@ -51,13 +51,12 @@ select {
 
 /*filtres*/
 
-
 /* Barre de recherche*/
-.input  svg{
+.input svg {
   width: 25px;
   height: 20px;
 }
-.form-inline.input-group.w-100{
+.form-inline.input-group.w-100 {
   /*class de l'input*/
 }
 .Loupeinput {
@@ -65,22 +64,21 @@ select {
   left: 3px;
   top: 2px;
   height: 35px;
-  background-color:#1B1B1B ;
+  background-color: #1b1b1b;
   z-index: 10;
   border-radius: 10px;
-  border-color: #1B1B1B;
+  border-color: #1b1b1b;
   margin-left: -55px;
   font-size: 5px;
-  
 }
-.Loupeinput:hover{
-  background-color: #FFD15B;
-  border-color: #FFD15B;
+.Loupeinput:hover {
+  background-color: #ffd15b;
+  border-color: #ffd15b;
 }
 .svgCroix {
   position: absolute;
-  right: 50px; 
-  top: 50%; 
+  right: 50px;
+  top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   z-index: 10;
@@ -92,25 +90,49 @@ select {
 
 /* Cards*/
 .card-body,
-p,li {
+p,
+li {
   font-size: 14px;
   list-style: none;
 }
+.card-body h5 {
+  font-weight: bold;
+  font-family: Anton;
+}
 .card {
-  width:100%;
+  width: 100%;
   max-width: 380px;
   height: 731px;
-}.card img {
- height:253px;
- object-fit: cover;
+  border-radius: 21px;
+}
+.card img {
+  height: 253px;
+  object-fit: cover;
+  border-top-left-radius: 21px;
+  border-top-right-radius: 21px;
+}
+.card h6 {
+  color: var(--Grey, #7a7a7a);
+  font-size: 12px;
+  font-weight: bold;
+}
+.span_min {
+  width: 63px;
+  height: 26px;
+  border-radius: 14px;
+  text-align: center;
+  background-color: #ffd15b;
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
 @media only screen and (max-width: 1350px) {
   .card {
-    width:80%;
+    width: 80%;
     max-width: 380px;
   }
 }
-article{
+article {
   margin-bottom: 50px;
 }
 @media only screen and (max-width: 1350px) {
@@ -121,12 +143,119 @@ article{
   }
 }
 .card-text {
-  overflow: hidden;         /* Cache le texte qui dépasse */
-  text-overflow: ellipsis;
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  height: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 50px;
 }
-.dynamic-input {
-  width: calc(100% - 2px);
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-  padding: 6px 12px;
+.left-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+}
+.div_ingredients .col {
+  flex: 1;
+}
+.Container_ingredient {
+  font-family: Manrope;
+  font-size: 14px;
+  display: flex;
+}
+.Container_ingredient h6 {
+  font-size: 14px;
+  color: #1b1b1b;
+}
+.Container_ingredient p {
+  color: var(--Grey, #7a7a7a);
+}
+
+/* css nouveau select*/
+.Container_select {
+  display: flex;
+  gap:5%;
+  margin-left: 5%;
+}
+.select {
+  cursor: pointer;
+}
+
+.select_label {
+  display: flex;
+  width: 200px;
+  height: 50px;
+  justify-content: space-between;
+  border: 1px solid #1e293b;
+  padding: 5px 12px;
+  display: inline-flex;
+  border-radius: 11px;
+  align-items: center;
+  transition: 0.3s background-color ease-in-out;
+  color: #1e293b;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  border: none;
+}
+.select_label svg {
+  height: 18px;
+  width: 18px;
+  margin-left: 10px;
+  transition: 0.3s transform ease-in-out;
+}
+.select.active .select_label svg {
+  transform: rotate(180deg);
+}
+.select.active .select_content {
+  display: block;
+}
+.select_content {
+  display: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 200px;
+  height: 300px;
+  border-radius: 5px;
+  overflow: scroll;
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  scrollbar-width: thin;
+}
+.input {
+  display: block;
+  width: 100%;
+  max-width: 170px;
+  margin: 5px;
+  margin-left: 10px;
+  border: 1px solid #c6c6c6;
+  border-radius: 2px;
+  box-shadow: none;
+  outline: none;
+}
+.selectIngredients {
+  margin-bottom: 5px;
+}
+.selectUstensiles div:hover {
+  cursor: pointer;
+  background-color: #ffd15b;
+}
+.selectAppareils div:hover {
+  cursor: pointer;
+  background-color: #ffd15b;
+}
+.selectIngredients div:hover {
+  cursor: pointer;
+  background-color: #ffd15b;
+}
+.select_content label {
+  margin-left: 10px;
 }

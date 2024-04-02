@@ -1,36 +1,43 @@
 class FiltreFactory {
   constructor() {
-    this.selectIngredients = document.getElementById("selectIngredients");
-    this.selectAppareils = document.getElementById("selectAppareils");
-    this.selectUstensiles = document.getElementById("selectUstensiles");
+    this.selectContent = document.querySelector(".select_content");
+    this.selectIngredients = document.querySelector(".selectIngredients");
+    this.selectAppareils = document.querySelector(".selectAppareils");
+    this.selectUstensiles = document.querySelector(".selectUstensiles");
+  
   }
 
   generateOption(ingredients, appliances, ustensils) {
-    this._clearSelectOptions();
+    this._clearSelect();
 
     this._generateSelectOptions(this.selectIngredients, ingredients);
     this._generateSelectOptions(this.selectAppareils, appliances);
     this._generateSelectOptions(this.selectUstensiles, ustensils);
+    
 
     return {
-      appliance: appliances,
       ingredient: ingredients,
+      appliance: appliances,
       ustensils: ustensils,
     };
   }
 
-  _clearSelectOptions() {
+  _clearSelect() {
     this.selectIngredients.innerHTML = "";
     this.selectAppareils.innerHTML = "";
     this.selectUstensiles.innerHTML = "";
   }
 
+
+
   _generateSelectOptions(selectElement, options) {
     options.forEach((optionValue) => {
-      const option = document.createElement("option");
-      option.value = optionValue;
-      option.textContent = optionValue;
-      selectElement.appendChild(option);
+      const div = document.createElement("div");
+      const label = document.createElement("label");
+      label.textContent = optionValue;
+      label.setAttribute("for", optionValue);
+      div.appendChild(label);
+      selectElement.appendChild(div);
     });
   }
 }
