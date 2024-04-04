@@ -1,4 +1,4 @@
-body,
+bodycol.mb-
 html {
   height: 100%;
   margin: 0;
@@ -44,11 +44,6 @@ main {
   padding: 10px;
   border-radius: 10px;
 }
-select {
-  margin-left: 40px;
-  width: 25px;
-}
-
 /*filtres*/
 
 /* Barre de recherche*/
@@ -155,6 +150,10 @@ article {
   overflow: hidden;
   margin-bottom: 50px;
 }
+article{
+  display: flex;
+  justify-content: center;
+}
 .left-column {
   display: flex;
   flex-direction: column;
@@ -179,17 +178,24 @@ article {
 .Container_ingredient p {
   color: var(--Grey, #7a7a7a);
 }
-
+.container-fluid label {
+  cursor: pointer;
+  margin-bottom: 0;
+  width: 91%;
+  max-width: 192px;
+  height: 32px;
+}
 /* css nouveau select*/
 .Container_select {
   display: flex;
-  gap:5%;
+  gap: 5%;
   margin-left: 5%;
+  flex-wrap: wrap;
+  width: 100%;
 }
 .select {
   cursor: pointer;
 }
-
 .select_label {
   display: flex;
   width: 200px;
@@ -205,6 +211,7 @@ article {
   font-family: Arial, Helvetica, sans-serif;
   background-color: white;
   border: none;
+  margin-bottom: 10px;
 }
 .select_label svg {
   height: 18px;
@@ -241,8 +248,15 @@ article {
   box-shadow: none;
   outline: none;
 }
-.selectIngredients {
-  margin-bottom: 5px;
+.select_content_field #croix{
+  position: absolute;
+  top: 14px;
+  right: 40px;
+}
+.select_content_field #loupe{
+  position: absolute;
+  top: 12px;
+  right: 20px;
 }
 .selectUstensiles div:hover {
   cursor: pointer;
@@ -258,4 +272,24 @@ article {
 }
 .select_content label {
   margin-left: 10px;
+}
+.DivTag {
+  margin-left: 5%;
+  margin-top: 2%;
+  display: flex;
+  gap: 60px;
+}
+.DivTag div {
+  display: inline-flex;
+  padding: 17px 18px;
+  align-items: center;
+  width: 203px;
+  height: 53px;
+  border-radius: 10px;
+  background: #ffd15b;
+}
+.DivchildTag {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 }

@@ -29,7 +29,6 @@ class FiltreFactory {
   }
 
 
-
   _generateSelectOptions(selectElement, options) {
     options.forEach((optionValue) => {
       const div = document.createElement("div");
@@ -38,6 +37,8 @@ class FiltreFactory {
       label.setAttribute("for", optionValue);
       div.appendChild(label);
       selectElement.appendChild(div);
-    });
+  
+    
+      });
+    };
   }
-}

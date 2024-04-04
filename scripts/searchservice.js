@@ -53,7 +53,7 @@ class SearchService {
     });
 
     let retour = {
-      resultats: this.recettes,
+      resultats: this.recettes, 
       filtresDispo: {
         ingredient: [...nomsIngredients],
         ustensils: [...ustensils],
