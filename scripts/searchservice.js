@@ -61,7 +61,8 @@ class SearchService {
       },
     };
     console.log(this.recettes.length);
-
+    /* console.log('Ustensils disponibles:', retour.filtresDispo.ustensils);  */
     return retour;
   }
 }
+
