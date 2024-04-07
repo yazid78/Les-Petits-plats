@@ -248,7 +248,7 @@ article{
   box-shadow: none;
   outline: none;
 }
-.select_content_field #croix{
+.select_content_field .croix{
   position: absolute;
   top: 14px;
   right: 40px;
