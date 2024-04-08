@@ -1,38 +1,3 @@
-let effacerinput = document.querySelector(".svgCroix");
-let effacerinputOptions = document.querySelectorAll(".croix");
-let inputOptions = document.querySelectorAll(".input");
-effacerinput.style.display = "none";
-
-effacerinputOptions.forEach(element => {
-  element.style.display = "none";
-});
-
-effacerinput.addEventListener("click", () => {
-  inputElement.value = "";
-  effacerinput.style.display = "none";
-  genererEtAfficherRecettes();
-});
-effacerinputOptions.forEach(element =>{
-  element.addEventListener("click", () => {
-    inputOptions.forEach(element => {
-      element.value = "" ;
-    });
- 
-  element.style.display = "none";
-  genererEtAfficherRecettes();
-})
-});
-inputElement.addEventListener("input", () => {
-  effacerinput.style.display = "block";
-});
-inputOptions.forEach(input => {
-  input.addEventListener("input", () => {
-      // Code à exécuter lorsque l'événement input est déclenché
-      effacerinputOptions.forEach(element => {
-        element.style.display = "block";
-      });
-  });
-});
 
 /* fonction effacer les labels cliquer */
 const selects = document.querySelectorAll(".select");
