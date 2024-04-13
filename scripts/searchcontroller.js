@@ -5,8 +5,8 @@ const filtreFactory = new FiltreFactory();
 
 // Initialisation des filtres sélectionnés
 let filtresSelectionnes = {
-  appliance: [],
-  ingredient: [],
+  appliances: [],
+  ingredients: [],
   ustensils: [],
 };
 
@@ -26,35 +26,29 @@ function genererEtAfficherRecettes() {
   }
 
   filtreFactory.generateOption(
-    resultatRecherche.filtresDispo.ingredient,
-    resultatRecherche.filtresDispo.appliance,
+    resultatRecherche.filtresDispo.ingredients,
+    resultatRecherche.filtresDispo.appliances,
     resultatRecherche.filtresDispo.ustensils
   );
 }
-function genererRecettesSansOptions() {
-  const motRecherche = inputElement.value.trim().toLowerCase();
 
-  let resultatRecherche = searchService.search(motRecherche, filtresSelectionnes);
-  if (resultatRecherche.resultats.length > 0) {
-    noResultsMessage.style.display = "none";
-    cardFactory.generate(resultatRecherche.resultats);
-  } else {
-    noResultsMessage.style.display = "block";
-    cardFactory.generate(resultatRecherche.resultats);
-  }
-}
+inputElement.addEventListener("input", () => {
+  genererEtAfficherRecettes();
+  nombredeRecette(); 
+});
 
-inputElement.addEventListener("input", genererEtAfficherRecettes);
 genererEtAfficherRecettes();
-
 
 filtreFactory.selectUstensiles.addEventListener("click", (event) => {
   const target = event.target;
   if (target.tagName === "LABEL") {
     const selectedUstensil = target.textContent.trim();
     filtresSelectionnes.ustensils.push(selectedUstensil);
+    //TODO: ÉTAPE 2 : réactiver l'affichage des tags
     afficherTag(DivTag, selectedUstensil, filtresSelectionnes.ustensils);
-    deleteLabelAfterClick(selectedUstensil)
+    genererEtAfficherRecettes();
+    rechercheOptionsDansInputs();
+    nombredeRecette();
   }
 });
 
@@ -62,9 +56,11 @@ filtreFactory.selectIngredients.addEventListener("click", (event) => {
   const target = event.target;
   if (target.tagName === "LABEL") {
     const selectedIngredient = target.textContent.trim();
-    filtresSelectionnes.ingredient.push(selectedIngredient);
-    afficherTag(DivTag, selectedIngredient, filtresSelectionnes.ingredient);
-    deleteLabelAfterClick(selectedIngredient)
+    filtresSelectionnes.ingredients.push(selectedIngredient);
+    afficherTag(DivTag, selectedIngredient, filtresSelectionnes.ingredients);
+    genererEtAfficherRecettes();
+    rechercheOptionsDansInputs();
+    nombredeRecette();
   }
 });
 
@@ -72,14 +68,29 @@ filtreFactory.selectAppareils.addEventListener("click", (event) => {
   const target = event.target;
   if (target.tagName === "LABEL") {
     const selectedAppliance = target.textContent.trim();
-    filtresSelectionnes.appliance.push(selectedAppliance);
-    afficherTag(DivTag, selectedAppliance, filtresSelectionnes.appliance);
-    deleteLabelAfterClick(selectedAppliance)
+    filtresSelectionnes.appliances.push(selectedAppliance);
+    afficherTag(DivTag, selectedAppliance, filtresSelectionnes.appliances);
+    genererEtAfficherRecettes();
+    rechercheOptionsDansInputs();
+    nombredeRecette();
   }
 });
 
-const DivTag = document.querySelector(".DivTag");
+/*
 
+Algo du controlleur
+
+J'appelle le service 
+  Paramètre 1 : contenu de la searchbar
+  Paramètre 2 : tableau filtres selectionnés
+
+
+Je récupère un retour de service 
+J'appelle la factory card en lui passant en paramètre le resultats
+J'appelle la factory option en lui passant en paramètre le filtresDispo
+
+*/
+const DivTag = document.querySelector(".DivTag");
 function afficherTag(DivParentTag, selectedFilter, filtresSelectionnes) {
   const newDiv = document.createElement("div");
   newDiv.classList.add("DivchildTag");
@@ -90,12 +101,18 @@ function afficherTag(DivParentTag, selectedFilter, filtresSelectionnes) {
 
   DivParentTag.appendChild(newDiv);
 
+  /* TODO: ETAPE 3 : ajouter les fonctions pour supprimer du tableau filtresSelectionnes 
+  l'élément sur lequel l'éutilisateur a cliqué sur la croix  pour supprimer le filtre
+*/
   newDiv.addEventListener("click", () => {
     const index = filtresSelectionnes.indexOf(selectedFilter);
+
     if (index !== -1) {
       filtresSelectionnes.splice(index, 1);
       DivParentTag.removeChild(newDiv);
       genererEtAfficherRecettes();
+      rechercheOptionsDansInputs();
+      nombredeRecette();
     }
   });
 

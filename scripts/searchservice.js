@@ -38,7 +38,7 @@ class SearchService {
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$
     // TODO: ÉTAPE 1 :  corriger ça
     //TODO: Debug cela pour qu'avec Tomate cela te sorte à la fin uniquement 4 éléments
-    if (filtresSelectionnes.ingredients.length > 0) {
+/*     if (filtresSelectionnes.ingredients.length > 0) {
       this.recettes = this.recettes.filter((recette) =>
         filtresSelectionnes.ingredients.every((ingredientSelectionne) =>
           recette.ingredients.some(
@@ -59,7 +59,7 @@ class SearchService {
           ustensilsString.includes(ustensilSelectionne.toLowerCase())
         );
       });
-    }
+    } */
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$
     // Préparation des filtresDispo
     let ingredients = new Set();
@@ -79,7 +79,7 @@ class SearchService {
       });
     });
 
-    if (filtresSelectionnes.ingredients.length > 0) {
+/*     if (filtresSelectionnes.ingredients.length > 0) {
       filtresSelectionnes.ingredients.forEach((ingredient) => ingredients.delete(ingredient));
     }
     if (filtresSelectionnes.appliances.length > 0) {
@@ -89,7 +89,7 @@ class SearchService {
     if (filtresSelectionnes.ustensils.length > 0) {
       filtresSelectionnes.ustensils.forEach((ustensil) => ustensils.delete(ustensil));
     }
-
+ */
     let retour = {
       resultats: recettesFiltrees,
       filtresDispo: {
