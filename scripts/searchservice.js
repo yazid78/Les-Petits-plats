@@ -4,10 +4,6 @@ class SearchService {
   }
 
   search(motRecherche, filtresSelectionnes) {
-<<<<<<< Updated upstream
-    //Algo SearchBar
-    if (motRecherche.length >= 3) {
-=======
     console.log("motRecherche : ", motRecherche);
     console.log("filtresSelectionnes : ", JSON.stringify(filtresSelectionnes));
 
@@ -27,7 +23,6 @@ class SearchService {
     }
 
     /*    if (motRecherche.length >= 3) {
->>>>>>> Stashed changes
       motRecherche = motRecherche.trim().toLowerCase();
       this.recettes = recipes.filter(
         (recette) =>
@@ -38,18 +33,6 @@ class SearchService {
     } else {
       this.recettes = recipes;
     }
-<<<<<<< Updated upstream
-    //Algo Filtre select
-    if (filtresSelectionnes.ingredient.length > 0) {
-      this.recettes = this.recettes.filter((recette) =>
-        filtresSelectionnes.ingredient.every((ingredientSelectionne) =>
-          recette.ingredients.some((ingredient) => ingredient.ingredient.toLowerCase().includes(ingredientSelectionne.toLowerCase()))
-        )
-      );
-    }
-    if (filtresSelectionnes.appliance.length > 0) {
-      this.recettes = this.recettes.filter((recette) => recette.appliance.includes(filtresSelectionnes.appliance));
-=======
  */
 
     // $$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -67,17 +50,19 @@ class SearchService {
 
     if (filtresSelectionnes.appliances.length > 0) {
       this.recettes = this.recettes.filter((recette) => filtresSelectionnes.appliances.includes(recette.appliance));
->>>>>>> Stashed changes
     }
 
     if (filtresSelectionnes.ustensils.length > 0) {
       this.recettes = this.recettes.filter((recette) => {
-        const ustensilsString = recette.ustensils.join(',').toLowerCase(); 
-        return filtresSelectionnes.ustensils.every((ustensilSelectionne) => ustensilsString.includes(ustensilSelectionne.toLowerCase()));
+        const ustensilsString = recette.ustensils.join(",").toLowerCase();
+        return filtresSelectionnes.ustensils.every((ustensilSelectionne) =>
+          ustensilsString.includes(ustensilSelectionne.toLowerCase())
+        );
       });
     }
-
-    let nomsIngredients = new Set();
+    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    // Préparation des filtresDispo
+    let ingredients = new Set();
     let appliances = new Set();
     let ustensils = new Set();
     this.recettes.forEach((recette) => {
@@ -90,14 +75,10 @@ class SearchService {
     });
     this.recettes.forEach((recette) => {
       recette.ingredients.forEach((ingredient) => {
-        nomsIngredients.add(ingredient.ingredient);
+        ingredients.add(ingredient.ingredient);
       });
     });
 
-<<<<<<< Updated upstream
-    let retour = {
-      resultats: this.recettes, 
-=======
     if (filtresSelectionnes.ingredients.length > 0) {
       filtresSelectionnes.ingredients.forEach((ingredient) => ingredients.delete(ingredient));
     }
@@ -111,23 +92,16 @@ class SearchService {
 
     let retour = {
       resultats: recettesFiltrees,
->>>>>>> Stashed changes
       filtresDispo: {
-        ingredient: [...nomsIngredients],
+        ingredients: [...ingredients],
         ustensils: [...ustensils],
-        appliance: [...appliances],
+        appliances: [...appliances],
       },
     };
-<<<<<<< Updated upstream
-    console.log(this.recettes.length);
-    /* console.log('Ustensils disponibles:', retour.filtresDispo.ustensils);  */
-=======
 
     console.log("retour : ", JSON.stringify(retour));
     console.log(this.recettes.length);
 
->>>>>>> Stashed changes
     return retour;
   }
 }
-

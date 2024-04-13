@@ -34,7 +34,6 @@ function genererEtAfficherRecettes() {
 function genererRecettesSansOptions() {
   const motRecherche = inputElement.value.trim().toLowerCase();
 
-<<<<<<< Updated upstream
   let resultatRecherche = searchService.search(motRecherche, filtresSelectionnes);
   if (resultatRecherche.resultats.length > 0) {
     noResultsMessage.style.display = "none";
@@ -44,13 +43,6 @@ function genererRecettesSansOptions() {
     cardFactory.generate(resultatRecherche.resultats);
   }
 }
-=======
-inputElement.addEventListener("input", () => {
-  genererEtAfficherRecettes();
-  nombredeRecette();
-  rechercheOptionsDansInputs();
-});
->>>>>>> Stashed changes
 
 inputElement.addEventListener("input", genererEtAfficherRecettes);
 genererEtAfficherRecettes();
