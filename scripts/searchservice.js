@@ -4,24 +4,13 @@ class SearchService {
   }
 
   search(motRecherche, filtresSelectionnes) {
-    //Algo SearchBar
-/*     let recettesFiltrees = [];
-    motRecherche = motRecherche.trim().toLowerCase();
 
-    for (let i = 0; i < this.recettes.length; i++) {
-      let recette = this.recettes[i];
 
-      // Vérifiez si le nom de la recette contient le mot de recherche
-      if (
-        recette.name.trim().toLowerCase().includes(motRecherche) ||
-        recette.description.trim().toLowerCase().includes(motRecherche) ||
-        recette.ingredients.some((ingredient) => ingredient.ingredient.trim().toLowerCase().includes(motRecherche))
-      ) {
-        recettesFiltrees.push(recette);
-      }
-    }
- */
-       if (motRecherche.length >= 3) {
+    console.log("motRecherche : ",motRecherche);
+    console.log("filtresSelectionnes : ",JSON.stringify(filtresSelectionnes));
+
+    // Création de la liste de resultats
+    if (motRecherche.length >= 3) {
       motRecherche = motRecherche.trim().toLowerCase();
       this.recettes = recipes.filter(
         (recette) =>
@@ -31,20 +20,27 @@ class SearchService {
       );
     } else {
       this.recettes = recipes;
-    } 
-    //Algo Filtre select */
-    if (filtresSelectionnes.ingredient.length > 0) {
+    }
+
+
+    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    // TODO: ÉTAPE 1 :  corriger ça
+    //TODO: Debug cela pour qu'avec Tomate cela te sorte à la fin uniquement 4 éléments 
+    if (filtresSelectionnes.ingredients.length > 0) {
       this.recettes = this.recettes.filter((recette) =>
-        filtresSelectionnes.ingredient.every((ingredientSelectionne) =>
+        filtresSelectionnes.ingredients.every((ingredientSelectionne) =>
           recette.ingredients.some((ingredient) =>
-            ingredient.ingredient.toLowerCase().includes(ingredientSelectionne.toLowerCase())
+            ingredient.ingredient.toLowerCase() === ingredientSelectionne.toLowerCase()
           )
         )
       );
     }
-    if (filtresSelectionnes.appliance.length > 0) {
-      this.recettes = this.recettes.filter((recette) => recette.appliance.includes(filtresSelectionnes.appliance));
+    
+
+    if (filtresSelectionnes.appliances.length > 0) {
+      this.recettes = this.recettes.filter((recette) => filtresSelectionnes.appliances.includes(recette.appliance));
     }
+    
 
     if (filtresSelectionnes.ustensils.length > 0) {
       this.recettes = this.recettes.filter((recette) => {
@@ -54,8 +50,9 @@ class SearchService {
         );
       });
     }
-
-    let nomsIngredients = new Set();
+    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    // Préparation des filtresDispo
+    let ingredients = new Set();
     let appliances = new Set();
     let ustensils = new Set();
     this.recettes.forEach((recette) => {
@@ -68,20 +65,34 @@ class SearchService {
     });
     this.recettes.forEach((recette) => {
       recette.ingredients.forEach((ingredient) => {
-        nomsIngredients.add(ingredient.ingredient);
+        ingredients.add(ingredient.ingredient);
       });
     });
 
+
+    if (filtresSelectionnes.ingredients.length > 0) {
+      filtresSelectionnes.ingredients.forEach((ingredient) => ingredients.delete(ingredient));
+    }
+    if (filtresSelectionnes.appliances.length > 0) {
+      filtresSelectionnes.appliances.forEach((appliance) => appliances.delete(appliance));
+    }
+
+    if (filtresSelectionnes.ustensils.length > 0) {
+      filtresSelectionnes.ustensils.forEach((ustensil) => ustensils.delete(ustensil));
+    }
+
     let retour = {
       resultats: this.recettes,
-    /*   resultats: recettesFiltrees, */
       filtresDispo: {
-        ingredient: [...nomsIngredients],
+        ingredients: [...ingredients],
         ustensils: [...ustensils],
-        appliance: [...appliances],
+        appliances: [...appliances],
       },
     };
-    console.log(this.recettes.length);
+
+    console.log("retour : ", JSON.stringify(retour));
+    console.log(this.recettes.length)
+
     return retour;
   }
 }
