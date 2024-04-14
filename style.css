@@ -112,10 +112,6 @@ main {
     height: 52px;
     flex-shrink: 0;
   }
-  #loupeinput:hover {
-    background-color: #ffd15b;
-    border-color: #ffd15b;
-  }
 }
 .Loupeinput {
   position: relative;
@@ -152,10 +148,13 @@ p,
 li {
   font-size: 14px;
   list-style: none;
+  font-family: Manrope;
 }
 .card-body h5 {
   font-weight: bold;
   font-family: Anton;
+  font-weight: 400;
+  line-height: normal;
 }
 .card {
   width: 100%;
@@ -211,7 +210,8 @@ article {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  line-height: normal;
 }
 article {
   display: flex;
@@ -340,7 +340,7 @@ article {
 }
 .select_content_field .croix {
   position: absolute;
-  top: 15px;
+  top: 14px;
   right: 40px;
 }
 .select_content_field #loupe {
