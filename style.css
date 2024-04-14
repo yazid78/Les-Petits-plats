@@ -87,9 +87,9 @@ main {
   width: 25px;
   height: 20px;
 }
-#input_main  {
+#input_main {
   border-radius: 11px;
-  background: #FFF;
+  background: #fff;
 }
 @media (min-width: 728px) {
   .form-control {
@@ -97,20 +97,20 @@ main {
     height: 72px;
     flex-shrink: 0;
   }
-  #loupeinput{
+  #loupeinput {
     position: relative;
-  left: -10px;
-  top: 10px;
-  height: 35px;
-  background-color: #1b1b1b;
-  z-index: 10;
-  border-radius: 10px;
-  border-color: #1b1b1b;
-  margin-left: -55px;
-  font-size: 5px;
-width: 51px;
-  height: 52px;
-  flex-shrink: 0;
+    left: -10px;
+    top: 10px;
+    height: 35px;
+    background-color: #1b1b1b;
+    z-index: 10;
+    border-radius: 10px;
+    border-color: #1b1b1b;
+    margin-left: -55px;
+    font-size: 5px;
+    width: 51px;
+    height: 52px;
+    flex-shrink: 0;
   }
 }
 .Loupeinput {
@@ -148,10 +148,13 @@ p,
 li {
   font-size: 14px;
   list-style: none;
+  font-family: Manrope;
 }
 .card-body h5 {
   font-weight: bold;
   font-family: Anton;
+  font-weight: 400;
+  line-height: normal;
 }
 .card {
   width: 100%;
@@ -207,7 +210,8 @@ article {
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  line-height: normal;
 }
 article {
   display: flex;
@@ -253,7 +257,6 @@ article {
   width: 100%;
 }
 @media (max-width: 630px) {
-
   .container-fluid {
     display: block;
   }
