@@ -4,10 +4,8 @@ class SearchService {
   }
 
   search(motRecherche, filtresSelectionnes) {
-
-
-    console.log("motRecherche : ",motRecherche);
-    console.log("filtresSelectionnes : ",JSON.stringify(filtresSelectionnes));
+    console.log("motRecherche : ", motRecherche);
+    console.log("filtresSelectionnes : ", JSON.stringify(filtresSelectionnes));
 
     // Création de la liste de resultats
     if (motRecherche.length >= 3) {
@@ -22,25 +20,19 @@ class SearchService {
       this.recettes = recipes;
     }
 
-
-    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$
-    // TODO: ÉTAPE 1 :  corriger ça
-    //TODO: Debug cela pour qu'avec Tomate cela te sorte à la fin uniquement 4 éléments 
     if (filtresSelectionnes.ingredients.length > 0) {
       this.recettes = this.recettes.filter((recette) =>
         filtresSelectionnes.ingredients.every((ingredientSelectionne) =>
-          recette.ingredients.some((ingredient) =>
-            ingredient.ingredient.toLowerCase() === ingredientSelectionne.toLowerCase()
+          recette.ingredients.some(
+            (ingredient) => ingredient.ingredient.toLowerCase() === ingredientSelectionne.toLowerCase()
           )
         )
       );
     }
-    
 
     if (filtresSelectionnes.appliances.length > 0) {
       this.recettes = this.recettes.filter((recette) => filtresSelectionnes.appliances.includes(recette.appliance));
     }
-    
 
     if (filtresSelectionnes.ustensils.length > 0) {
       this.recettes = this.recettes.filter((recette) => {
@@ -50,7 +42,6 @@ class SearchService {
         );
       });
     }
-    // $$$$$$$$$$$$$$$$$$$$$$$$$$$$
     // Préparation des filtresDispo
     let ingredients = new Set();
     let appliances = new Set();
@@ -68,7 +59,6 @@ class SearchService {
         ingredients.add(ingredient.ingredient);
       });
     });
-
 
     if (filtresSelectionnes.ingredients.length > 0) {
       filtresSelectionnes.ingredients.forEach((ingredient) => ingredients.delete(ingredient));
@@ -91,7 +81,7 @@ class SearchService {
     };
 
     console.log("retour : ", JSON.stringify(retour));
-    console.log(this.recettes.length)
+    console.log(this.recettes.length);
 
     return retour;
   }
