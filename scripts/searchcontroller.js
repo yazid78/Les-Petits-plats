@@ -35,7 +35,10 @@ function genererEtAfficherRecettes() {
 inputElement.addEventListener("input", () => {
   genererEtAfficherRecettes();
   nombredeRecette(); 
+
   rechercheOptionsDansInputs();
+
+    rechercheOptionsDansInputs();
 });
 
 genererEtAfficherRecettes();

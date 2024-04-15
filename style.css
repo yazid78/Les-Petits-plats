@@ -112,6 +112,13 @@ main {
     height: 52px;
     flex-shrink: 0;
   }
+
+
+#loupeinput:hover{
+  background-color: #ffd15b;
+  border-color: #ffd15b;
+}
+
 }
 .Loupeinput {
   position: relative;

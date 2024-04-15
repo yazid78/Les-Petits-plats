@@ -7,7 +7,11 @@ class CardFactory {
       //Déclaration variables
       const divCardCol = document.createElement("article");
       const divCard = document.createElement("div");
-      const picture = "./Photos_P7_JS_Les_petits plats" + "/" + element.image;
+
+      const picture = "./Photos_P7_JS_Les_petits_plats" + "/" + element.image;
+
+      const picture = "./Photos_P7_JS_Les petits_plats" + "/" + element.image;
+
       const img = document.createElement("img");
       const cardBody = document.createElement("div");
       const h5_title = document.createElement("h5");
