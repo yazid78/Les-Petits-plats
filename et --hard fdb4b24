@@ -1,0 +1,65 @@
+[33mfdb4b24[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: pull: Fast-forward
+[33mde941e9[m HEAD@{1}: checkout: moving from withloops to main
+[33md1e20e8[m[33m ([m[1;32mwithloops[m[33m)[m HEAD@{2}: commit: correction algo search
+[33m334cd7d[m HEAD@{3}: checkout: moving from main to withloops
+[33mde941e9[m HEAD@{4}: commit: bloquer rechargement loupe
+[33m3aa6a4d[m HEAD@{5}: checkout: moving from withloops to main
+[33m334cd7d[m HEAD@{6}: checkout: moving from main to withloops
+[33m3aa6a4d[m HEAD@{7}: commit: maj css
+[33m8fa7b07[m HEAD@{8}: checkout: moving from withloops to main
+[33m334cd7d[m HEAD@{9}: commit: maj css
+[33m411589a[m HEAD@{10}: checkout: moving from main to withloops
+[33m8fa7b07[m HEAD@{11}: pull: Merge made by the 'ort' strategy.
+[33m11884e7[m HEAD@{12}: commit: dernier modif details css
+[33mce3d29d[m HEAD@{13}: commit: correction liens script ajout./
+[33mf58d7c8[m HEAD@{14}: checkout: moving from MAIN to main
+[33mf58d7c8[m HEAD@{15}: checkout: moving from withloops to MAIN
+[33m411589a[m HEAD@{16}: checkout: moving from main to withloops
+[33mf58d7c8[m HEAD@{17}: reset: moving to HEAD
+[33mf58d7c8[m HEAD@{18}: checkout: moving from withloops to main
+[33m411589a[m HEAD@{19}: reset: moving to HEAD
+[33m411589a[m HEAD@{20}: commit: ajout algo avec boucles natives
+[33maf4c019[m HEAD@{21}: checkout: moving from main to withloops
+[33mf58d7c8[m HEAD@{22}: checkout: moving from withloops to main
+[33maf4c019[m HEAD@{23}: reset: moving to HEAD
+[33maf4c019[m HEAD@{24}: checkout: moving from main to withloops
+[33mf58d7c8[m HEAD@{25}: checkout: moving from withloops to main
+[33maf4c019[m HEAD@{26}: reset: moving to HEAD
+[33maf4c019[m HEAD@{27}: checkout: moving from main to withloops
+[33mf58d7c8[m HEAD@{28}: checkout: moving from withloops to main
+[33maf4c019[m HEAD@{29}: reset: moving to HEAD
+[33maf4c019[m HEAD@{30}: checkout: moving from main to withloops
+[33mf58d7c8[m HEAD@{31}: checkout: moving from withloops to main
+[33maf4c019[m HEAD@{32}: checkout: moving from main to withloops
+[33mf58d7c8[m HEAD@{33}: checkout: moving from withloops to main
+[33maf4c019[m HEAD@{34}: commit: maj fichiers
+[33maf049df[m HEAD@{35}: checkout: moving from main to withloops
+[33mf58d7c8[m HEAD@{36}: checkout: moving from withloops to main
+[33maf049df[m HEAD@{37}: commit: modif algo
+[33m3a1a202[m HEAD@{38}: commit: nouvelle branch
+[33m137b160[m HEAD@{39}: checkout: moving from main to withloops
+[33mf58d7c8[m HEAD@{40}: reset: moving to HEAD
+[33mf58d7c8[m HEAD@{41}: commit: maj responsive
+[33mffe5629[m HEAD@{42}: commit: Co-authored-by: clement.sabattie@hotmail.fr <clement.sabattie@hotmail.fr>
+[33m2470e83[m HEAD@{43}: commit: ajout effacerinputOptions
+[33m137b160[m HEAD@{44}: commit: ajout search filtre
+[33mbceb104[m HEAD@{45}: commit: retrait option apres click
+[33m3b9629c[m HEAD@{46}: commit: maj algo , maj css select
+[33m40cf2c3[m HEAD@{47}: commit: maj algo filtre et tag
+[33m1ca9cd2[m HEAD@{48}: commit: correction algo filtre
+[33m400f19f[m HEAD@{49}: commit: maj search service
+[33m34f524b[m HEAD@{50}: commit: maj tag et ajout fichier utils
+[33m5da573f[m HEAD@{51}: commit: push tag
+[33m32b1fdd[m HEAD@{52}: commit: push filtre visuel
+[33m016f448[m HEAD@{53}: commit: maj algo filtre et suppression doublons
+[33m87c42b2[m HEAD@{54}: commit: ajout algo filtre option et ajout constructor patern
+[33m34f368a[m HEAD@{55}: commit: return to js
+[33m84ad819[m HEAD@{56}: commit: ajout constructor
+[33mebafb5e[m HEAD@{57}: commit: Co-authored-by: clement.sabattie@hotmail.fr <clement.sabattie@hotmail.fr>
+[33m148bb7b[m HEAD@{58}: commit: maj algo de rechercheet ajout filtres options
+[33m31cfd9a[m HEAD@{59}: commit: ajout algo de recherche
+[33mdc18ebd[m HEAD@{60}: commit: restructuration du projet en MVC
+[33m1fbf63b[m HEAD@{61}: commit: maj search algo
+[33m302b4f6[m HEAD@{62}: commit: ajout filtre searchbar
+[33m1a8ab99[m HEAD@{63}: Branch: renamed refs/heads/main to refs/heads/main
+[33m1a8ab99[m HEAD@{65}: commit (initial): first commit
