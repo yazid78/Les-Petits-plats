@@ -187,6 +187,9 @@ li {
   right: 20px;
   top: 20px;
 }
+.card:hover{
+  transform: scale(1.1);
+}
 @media only screen and (max-width: 1350px) {
   .card {
     width: 80%;
@@ -195,7 +198,9 @@ li {
 }
 article {
   margin-bottom: 50px;
+
 }
+
 @media only screen and (max-width: 1350px) {
   article {
     display: flex;
