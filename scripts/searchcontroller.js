@@ -34,7 +34,7 @@ function genererEtAfficherRecettes() {
 
 inputElement.addEventListener("input", () => {
   genererEtAfficherRecettes();
-  nombredeRecette(); 
+  nombredeRecette();
   rechercheOptionsDansInputs();
 });
 
@@ -45,7 +45,6 @@ filtreFactory.selectUstensiles.addEventListener("click", (event) => {
   if (target.tagName === "LABEL") {
     const selectedUstensil = target.textContent.trim();
     filtresSelectionnes.ustensils.push(selectedUstensil);
-    //TODO: ÉTAPE 2 : réactiver l'affichage des tags
     afficherTag(DivTag, selectedUstensil, filtresSelectionnes.ustensils);
     genererEtAfficherRecettes();
     rechercheOptionsDansInputs();
@@ -77,20 +76,6 @@ filtreFactory.selectAppareils.addEventListener("click", (event) => {
   }
 });
 
-/*
-
-Algo du controlleur
-
-J'appelle le service 
-  Paramètre 1 : contenu de la searchbar
-  Paramètre 2 : tableau filtres selectionnés
-
-
-Je récupère un retour de service 
-J'appelle la factory card en lui passant en paramètre le resultats
-J'appelle la factory option en lui passant en paramètre le filtresDispo
-
-*/
 const DivTag = document.querySelector(".DivTag");
 function afficherTag(DivParentTag, selectedFilter, filtresSelectionnes) {
   const newDiv = document.createElement("div");
@@ -102,9 +87,8 @@ function afficherTag(DivParentTag, selectedFilter, filtresSelectionnes) {
 
   DivParentTag.appendChild(newDiv);
 
-  /* TODO: ETAPE 3 : ajouter les fonctions pour supprimer du tableau filtresSelectionnes 
-  l'élément sur lequel l'éutilisateur a cliqué sur la croix  pour supprimer le filtre
-*/
+  /* l'élément sur lequel l'utilisateur a cliqué sur la croix  pour supprimer le filtre
+   */
   newDiv.addEventListener("click", () => {
     const index = filtresSelectionnes.indexOf(selectedFilter);
 

@@ -4,9 +4,6 @@ class SearchService {
   }
 
   search(motRecherche, filtresSelectionnes) {
-    console.log("motRecherche : ", motRecherche);
-    console.log("filtresSelectionnes : ", JSON.stringify(filtresSelectionnes));
-
     // Création de la liste de resultats
     if (motRecherche.length >= 3) {
       motRecherche = motRecherche.trim().toLowerCase();
@@ -79,9 +76,6 @@ class SearchService {
         appliances: [...appliances],
       },
     };
-
-    console.log("retour : ", JSON.stringify(retour));
-    console.log(this.recettes.length);
 
     return retour;
   }

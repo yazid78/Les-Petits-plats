@@ -350,7 +350,7 @@ article {
   top: 14px;
   right: 40px;
 }
-.select_content_field #loupe {
+.select_content_field .loupe_options {
   position: absolute;
   top: 12px;
   right: 20px;
