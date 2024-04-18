@@ -93,9 +93,9 @@ class SearchService {
     }
 
     // Préparation des filtresDispo
-    let ingredients = new Set();
-    let appliances = new Set();
-    let ustensils = new Set();
+    const ingredients = new Set();
+    const appliances = new Set();
+    const ustensils = new Set();
     for (let i = 0; i < this.recettes.length; i++) {
       appliances.add(this.recettes[i].appliance);
     }
