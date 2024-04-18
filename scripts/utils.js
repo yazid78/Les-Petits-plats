@@ -82,4 +82,8 @@ nombre_recette.innerHTML = searchService.recettes.length +  " recettes"
 }
 
 rechercheOptionsDansInputs();
+
 nombredeRecette()
+
+
+

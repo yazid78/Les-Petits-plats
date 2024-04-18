@@ -34,7 +34,9 @@ function genererEtAfficherRecettes() {
 
 inputElement.addEventListener("input", () => {
   genererEtAfficherRecettes();
+
   nombredeRecette();
+
   rechercheOptionsDansInputs();
 });
 
@@ -77,7 +79,6 @@ filtreFactory.selectAppareils.addEventListener("click", (event) => {
 });
 
 const DivTag = document.querySelector(".DivTag");
-
 function afficherTag(DivParentTag, selectedFilter, filtresSelectionnes) {
   const newDiv = document.createElement("div");
   newDiv.classList.add("DivchildTag");
@@ -88,8 +89,9 @@ function afficherTag(DivParentTag, selectedFilter, filtresSelectionnes) {
 
   DivParentTag.appendChild(newDiv);
 
-  /* l'élément sur lequel l'utilisateur a cliqué sur la croix  pour supprimer le filtre
-   */
+
+  /*  l'élément sur lequel l'utilisateur a cliqué sur la croix  pour supprimer le filtre*/
+
   newDiv.addEventListener("click", () => {
     const index = filtresSelectionnes.indexOf(selectedFilter);
 
