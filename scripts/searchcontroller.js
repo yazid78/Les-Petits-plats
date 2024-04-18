@@ -34,7 +34,9 @@ function genererEtAfficherRecettes() {
 
 inputElement.addEventListener("input", () => {
   genererEtAfficherRecettes();
-  nombredeRecette(); 
+
+  nombredeRecette();
+
   rechercheOptionsDansInputs();
 });
 
@@ -87,7 +89,9 @@ function afficherTag(DivParentTag, selectedFilter, filtresSelectionnes) {
 
   DivParentTag.appendChild(newDiv);
 
+
   /*  l'élément sur lequel l'utilisateur a cliqué sur la croix  pour supprimer le filtre*/
+
   newDiv.addEventListener("click", () => {
     const index = filtresSelectionnes.indexOf(selectedFilter);
 

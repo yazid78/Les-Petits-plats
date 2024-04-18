@@ -112,10 +112,12 @@ main {
     height: 52px;
     flex-shrink: 0;
   }
+
   #loupeinput:hover{
     background-color: #ffd15b;
     border-color: #ffd15b;
   }
+
 }
 .Loupeinput {
   position: relative;
@@ -352,7 +354,9 @@ article {
   top: 14px;
   right: 40px;
 }
-.select_content_field #loupe {
+
+.select_content_field .loupe_options {
+
   position: absolute;
   top: 12px;
   right: 20px;

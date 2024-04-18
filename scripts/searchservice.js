@@ -6,7 +6,10 @@ class SearchService {
 
   search(motRecherche, filtresSelectionnes) {
     // Création de la liste de resultats
+
     const results = [];
+
+
     if (motRecherche.length >= 3) {
       motRecherche = motRecherche.trim().toLowerCase();
 
@@ -33,6 +36,7 @@ class SearchService {
     } else {
       this.recettes = recipes;
     }
+
 
     /*Algo filtres selectionnées */
     if (filtresSelectionnes.ustensils && filtresSelectionnes.ustensils.length > 0) {
@@ -127,6 +131,58 @@ class SearchService {
       for (let i = 0; i < filtresSelectionnes.ustensils.length; i++) {
         ustensils.delete(filtresSelectionnes.ustensils[i]);
       }
+    }
+
+    if (filtresSelectionnes.ingredients.length > 0) {
+      this.recettes = this.recettes.filter((recette) =>
+        filtresSelectionnes.ingredients.every((ingredientSelectionne) =>
+          recette.ingredients.some(
+            (ingredient) => ingredient.ingredient.toLowerCase() === ingredientSelectionne.toLowerCase()
+          )
+        )
+      );
+    }
+
+    if (filtresSelectionnes.appliances.length > 0) {
+      this.recettes = this.recettes.filter((recette) => filtresSelectionnes.appliances.includes(recette.appliance));
+    }
+
+    if (filtresSelectionnes.ustensils.length > 0) {
+      this.recettes = this.recettes.filter((recette) => {
+        const ustensilsString = recette.ustensils.join(",").toLowerCase();
+        return filtresSelectionnes.ustensils.every((ustensilSelectionne) =>
+          ustensilsString.includes(ustensilSelectionne.toLowerCase())
+        );
+      });
+    }
+    // Préparation des filtresDispo
+    let ingredients = new Set();
+    let appliances = new Set();
+    let ustensils = new Set();
+    this.recettes.forEach((recette) => {
+      appliances.add(recette.appliance);
+    });
+    this.recettes.forEach((recette) => {
+      recette.ustensils.forEach((ustensil) => {
+        ustensils.add(ustensil);
+      });
+    });
+    this.recettes.forEach((recette) => {
+      recette.ingredients.forEach((ingredient) => {
+        ingredients.add(ingredient.ingredient);
+      });
+    });
+
+
+    if (filtresSelectionnes.ingredients.length > 0) {
+      filtresSelectionnes.ingredients.forEach((ingredient) => ingredients.delete(ingredient));
+    }
+    if (filtresSelectionnes.appliances.length > 0) {
+      filtresSelectionnes.appliances.forEach((appliance) => appliances.delete(appliance));
+    }
+
+    if (filtresSelectionnes.ustensils.length > 0) {
+      filtresSelectionnes.ustensils.forEach((ustensil) => ustensils.delete(ustensil));
     }
 
     let retour = {
